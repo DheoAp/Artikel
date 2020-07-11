@@ -1,0 +1,55 @@
+{% extends 'base_manage.html' %}
+
+
+{% block title %}
+    Update Data
+{% endblock title %}
+
+
+{% block manage-artikel %}
+<section class="mb-5">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md">
+                <div class="card card-body">
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <h4><p>Anda yakin ingin Update?</h4>
+                            <div class="form-group">
+                                <div class="row mt-5">
+                                    <div class="col-md-6">
+                                        <label >Judul:</label>
+                                        <input required name="{{Update.judul.name}}" value="{{Update.judul.value}}" type="text" class="form-control" placeholder="Judul">
+                                        <br>
+                                        <label>Content:</label>
+                                        <textarea name="{{Update.body.name}}"  rows="15" class="form-control">{{Update.body.value}}</textarea>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label>Kategori:</label>
+                                        <input required name="{{Update.kategori.name}}" value="{{Update.kategori.value}}" type="text" class="form-control" placeholder="Judul">
+                                        <br>
+                                        <label>Penulis:</label>
+                                        <input required name="{{Update.penulis.name}}" value="{{Update.penulis.value}}" type="text" class="form-control" placeholder="Judul">
+                                        <br>
+                                        <label>Gambar:</label>
+                                        <div class="card mb-3">
+                                            <div class="card-body">
+                                                <label for="">{{Update.image.value}}</label>
+                                                <input required type="file" class="form-control-file" name="{{Update.image.name}}"> 
+                                            </div>
+                                        </div>
+                                        <a class="btn btn-warning" href="{% url 'manage' %}">Tidak</a>
+                                        <button type="submit" class="btn btn-info">Update</button>                                        
+                                    </div>
+                                </div>                                      
+                            </div>         
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock manage-artikel %}
+    

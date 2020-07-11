@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Detail Artikel
+{% endblock title %}
+    
+
+{% block content-artikel-detail %}
+<style>
+    /* Untuk Smooth Scrolling */
+.backTop {
+    margin: 0;
+    position: fixed;
+    bottom: 80px;
+    right: 40px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,.18);
+    background-color:rgba(192,192,192,0.5);
+    z-index: 100;
+    display: none;
+    text-decoration: none;
+}
+.backTop:hover {
+    cursor: pointer;
+}
+/* Akhir Smooth Scrolling */
+
+/* untuk menengahkan gambar */
+img{
+    display:block; 
+    margin-left: auto;
+    margin-right: auto;
+} 
+</style>
+
+<!-- Awal Content -->
+<div class="container">
+    <!-- Awal Row -->
+    <div class="row">
+        <div class="col-lg">    
+            <h1 class="mt-4">{{Detail.judul}}</h1> <!-- Title -->   
+            <span class="lead">
+                <span>Penulis</span>
+               <span><b>{{Detail.penulis}}</b></span> <!-- Author -->
+            </span>  
+            <p>Posted on {{Detail.publish|date}}</p><!-- Date/Time -->
+            <hr>        
+            <img class="img-fluid rounded" src="{{Detail.image.url}}" alt=""> <!-- Preview Image -->
+            <hr>
+            <!-- Post Content -->
+            <p class="lead">{{Detail.body|linebreaksbr}}</p>
+            <hr>
+        </div>
+    </div>
+    <!-- Akhir row -->
+</div>
+<!-- Akhir Content -->
+
+<!-- untuk Smooth Scrolling -->
+<div class="backTop"><i class="fa fa-angle-up"></i></div>
+
+
+{% endblock content-artikel-detail %}

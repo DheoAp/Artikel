@@ -1,0 +1,46 @@
+{% extends 'base_manage.html' %}
+
+{% block title %}
+  Manage Artikel
+{% endblock title %}
+
+
+{% block manage-artikel %}
+<section class="mt-5"> 
+<div class="container">
+<h1  class="text-center">Manage Artikel</h1>
+<a href="{% url 'create' %}" class="btn btn-primary mb-3">Tambah Artikel <i class="fas fa-plus"></i></a>        
+<table class="table table-bordered table-hover">
+    <thead class="text-center">
+      <tr>
+        <th scope="col">No</th>
+        <th scope="col">Judul</th>
+        <th scope="col">Kategori</th>
+        <th scope="col">Penulis</th>
+        <th scope="col">Publish</th>
+        <th scope="col">Update</th>
+        <th colspan="3" scope="col">Aksi</th>
+      </tr>
+    </thead>
+    <tbody class="text-center">
+
+      {% for data in Data %}
+      <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td class="text-left">{{data.judul}}</td>
+        <td>{{data.kategori}}</td>
+        <td>{{data.penulis}}</td>
+        <td>{{data.publish}}</td>
+        <td>{{data.update}}</td>
+        <td><a class="btn btn-success" href="{% url 'update' data.id %}" title="Edit Artiket"><i class="fas fa-edit"></i></a></td>
+        <td><a class="btn btn-info" href="{% url 'detail' data.id %}" title="Detail Artikel"><i class="fas fa-info-circle"></i></a></td>
+        <td><a class="btn btn-danger" href="{% url 'delete' data.id %}"><i class="fas fa-trash-alt"></i></a></td>
+      </tr>
+      {% endfor %}
+          
+    </tbody>
+</table>
+</div>
+</section>
+
+{% endblock manage-artikel %}

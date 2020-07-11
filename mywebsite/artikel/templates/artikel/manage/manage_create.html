@@ -1,0 +1,51 @@
+{% extends 'base_manage.html' %}
+
+{% block title %}
+    Create Artikel
+{% endblock title %}
+
+
+{% block manage-artikel %}
+<section class="m-4">
+<div class="container">
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+            <h1 class="text-center">Tambah Artikel</h1>
+            <hr>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <div class="row mt-5">
+                        <div class="col-md-6 mb-5">
+                            <label for="judul">Judul:</label>
+                            <input id="judul" required name="{{form_data.judul.name}}" type="text" class="form-control" placeholder="Judul">
+                            <br>
+                            <label for="penuis">Penulis:</label>
+                            <input id="penulis" required name="{{form_data.penulis.name}}" type="text" class="form-control" placeholder="Penulis">
+                            <br>
+                            <label for="kategori">Kategori:</label>
+                            <input required name="{{form_data.kategori.name}}" id="kategori" type="text" class="form-control" placeholder="kategori">                      
+                            <br>
+                            <label for="gambar1">Gambar</label>
+                            <input type="file" name="{{form_data.image.name}}" id="gambar1">                           
+                        </div>
+                    
+                        <div class="col-md-6">
+                            <label for="body" >Content:</label>
+                            <textarea name="{{form_data.body.name}}" required rows="10" class="form-control"></textarea>
+                            
+                        </div>
+                    </div>           
+                </div>      
+                <button type="submit" class="btn btn-success">Simpan</button>
+                <button type="reset" class="btn btn-warning">Reset</button>
+                <a href="{% url 'manage' %}" class="btn btn-danger">Kembali</a>
+            </form>
+        </div>
+    </div>
+</div>
+</div>   
+</section>
+{% endblock manage-artikel %}
+    

@@ -1,0 +1,18 @@
+/* Untuk untuk Base */
+body{
+    background-color: #f1f2f6;
+    padding-top: 50px
+}
+/* Ahkhir untuk Base */
+
+
+/* Untuk Artikel-Home */
+.warna-bg{    
+    background: linear-gradient(to right, rgba(91,134,229, .92), rgba(54,209,220,.92)); /* untuk gradasi warna */
+}
+.jumbotron-bg{
+    background-size: cover;
+    background: url("/static/img/bg.jpg");
+    background-size: 300px;
+}
+/* Akhir Artikel-Home */

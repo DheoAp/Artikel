@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Artikel
+{% endblock title %}
+
+
+{% block content-artikel-home %}
+<!-- Smooth Scrolling -->
+<style>
+.backTop {
+    margin: 0;
+    position: fixed;
+    bottom: 80px;
+    right: 40px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,.18);
+    background-color:rgba(192,192,192,0.5);
+    z-index: 100;
+    display: none;
+    text-decoration: none;
+}
+.backTop:hover {
+    cursor: pointer;
+}
+</style>
+
+<!-- Awal Jumbotron -->
+<section class="jumbotron-bg">
+    <div class="jumbotron warna-bg text-white">
+        <div class="container">
+            <h1 class="display-4">Selamat Datang</h1>
+            <p class="lead">Website ini adalah tempat berkumpulnya artikel, tutorial dan lainnya. <b>Source code</b> ada di GitHub</p>
+            
+            <hr class="my-4">
+            <a class="btn btn-primary btn-lg" href="https://github.com/DheoAp" role="button">Go to GitHub</a> 
+                       
+        </div>
+    </div>
+</section>
+<!-- Akhir Jumbotron -->
+
+<!--  -->
+<div class="section">
+<!-- Awal Content -->
+  <!-- Awal container -->
+  <div class="container">
+    
+    <!-- Awal row --> 
+    <div class="row">
+
+      <!-- Awal Blog Column -->
+      <div class="col-md-8">    
+        <!-- <h1 class="my-4">Page Heading
+        <small>Secondary Text</small>
+        </h1> -->    
+        <!-- Blog Post -->
+        {% for post_artikel in Post %}          
+        <div class="card mb-4">       
+
+        <img class="card-img-top" src="{{post_artikel.image.url}}" alt="Gambar Tidak Muncul">
+        <div class="card-body">
+        <h2 class="card-title">{{post_artikel.judul}}</h2>
+        <p class="card-text">{{post_artikel.body|truncatewords:25}}</p>
+        <a href="{% url 'artikel-post' post_artikel.slug %}" class="btn btn-primary">Read More &rarr;</a>
+        </div>
+        <div class="card-footer text-muted">
+        <span>Posted on {{post_artikel.publish}} by <span class="text-primary">{{post_artikel.penulis}}</span></span>
+        </div>
+        </div>
+        {% endfor %}
+        
+        <!-- Pagination -->
+        {% if is_paginated %}  
+        <nav aria-label="...">
+          <ul class="pagination justify-content-center mb-4">            
+            
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+              <a class="page-link" href="{% url 'artikel' page_obj.previous_page_number %}" >Previous</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+              <a class="page-link" href="" tabindex="-1" arial-disabled="True">Previous</a>
+            </li>
+            {% endif %}
+              {% for page in paginator.page_range %}              
+                {% if page is page_obj.number %}
+                <li class="page-item active">
+                  <span class="page-link" href="#">{{page}}<span class="sr-only">(current)</span></span>
+                </li>
+                {% else %}
+                <li class="page-item">
+                  <a class="page-link" href="{% url 'artikel' page %}">{{page}}</a>
+                </li>
+                {% endif %}                
+              {% endfor %}            
+            {% if page_obj.has_next %}
+            <li class="page-item">
+              <a class="page-link" href="{% url 'artikel' page_obj.next_page_number %}">Next</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+              <a class="page-link" href="" tabindex="-1" aria-disabled="true">Next</a>
+            </li>
+            {% endif %}
+
+          </ul>
+        </nav>
+        {% endif %}
+
+      </div>
+      <!-- Akhir Blog Column -->
+
+      <!-- Sidebar Widgets Column -->
+      <div class="col-md-4">
+
+        <!-- Categories Widget -->
+        <div class="card my-3">
+          <h5 class="card-header">Categories</h5>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-6">
+                {% for kategori_ in Kategori %}                                
+                <ul class="list-unstyled mb-0">
+                  <li><a href="{% url 'kategori-artikel' kategori_ 1 %}">{{kategori_}}</a></li>
+                </ul>
+              {% endfor %}
+              </div>              
+            </div>
+          </div>
+        </div>
+
+        <!-- Side Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">Source Code</h5>
+          <div class="card-body">
+            <a href="https://github.com/DheoAp">Artikel</a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- Akhir row -->
+
+  </div>
+  <!-- Akhir container -->
+</div>
+<!-- Akhir -->
+
+{% endblock content-artikel-home %}
+    

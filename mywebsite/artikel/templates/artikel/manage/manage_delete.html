@@ -1,0 +1,49 @@
+{% extends 'base_manage.html' %}
+
+{% block title %}
+    Hapus Data
+{% endblock title %}
+
+
+{% block manage-artikel %}
+<section style="height: 420px; margin-top: 40px;">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md">
+                <div class="card card-body">
+                    <form action="{% url 'delete' Data.id %}" method="post">
+                        {% csrf_token %}
+                        <h4><p>Anda yakin ingin hapus?</h4>
+                        <table class="table table-bordered">
+                            <thead class="text-center">
+                              <tr>
+                                <th scope="col">Judul</th>
+                                <th scope="col">Kategori</th>
+                                <th scope="col">Penulis</th>
+                                <th scope="col">Publish</th>
+                                <th scope="col">Update</th>
+                              </tr>
+                            </thead>
+                            <tbody class="text-center">
+                              <tr>
+                                <td>{{Data.judul}}</td>
+                                <td>{{Data.kategori}}</td>
+                                <td>{{Data.penulis}}</td>
+                                <td>{{Data.publish}}</td>
+                                <td>{{Data.update}}</td>
+                              </tr>
+                            </tbody>
+                        </table>
+        
+                        <button type="submit" class="btn btn-danger">Ya</button>
+                        <a class="btn btn-warning" href="{% url 'manage' %}">Tidak</a>
+                        <!-- <input class="btn btn-danger" type="submit" name="Confirm"> -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock manage-artikel %}
+    
