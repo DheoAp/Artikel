@@ -1,27 +1,29 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-transparent navbar-dark bg-dark" >
     <div class="container">
-        <a class="navbar-brand" href="{% url 'cv' %}">Dheo Apriansyah</a>
+        <a class="navbar-brand" href="{% url 'cv' %}">Hallo, {{user}}</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon "></span>
         </button>
-        
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="{% url 'manage' %}">Manage</a>
+                </li>               
+            </ul>
+        </div>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link text-light" href="{% url 'artikel' 1 %}">Artikel</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="{% url 'manage' %}">Manage</a>
-                </li>
-            </ul>
-            
+                    <a class="nav-link text-light" href="{% url 'logout' %}">Logout</a>
+                </li>              
+            </ul>            
             <!-- <div class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    My Projects
+                   Akun
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="">Artikel</a>
-                    <a class="dropdown-item" href="">Crud Barang</a>
+                    <a class="dropdown-item" href="">Buat Akun Penulis</a>
+                    <a class="dropdown-item" href="">Buat Akun Kreator</a>
                 </div>
             </div> -->
         </div>

@@ -4,12 +4,13 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
-from artikel.views import(cv,Artikel,DetailArtikel,KategoriArtikel,
+from artikel.views import(cv,loginPage,LogoutPage,Artikel,DetailArtikel,KategoriArtikel,
                         manage,create,update,delete,detail)
-
-# path('artikel/<str:kategori>/<str:page>',KategoriArtikel.as_view(),name='kategori-artikel'),
 urlpatterns = [
     path('',cv,name='cv'),
+
+    path('login',loginPage,name='login'),
+    path('logout',LogoutPage,name='logout'),
 
     path('artikel/<str:page>',Artikel.as_view(),name='artikel'),
     path('artikel/<str:kategori>/<str:page>',KategoriArtikel.as_view(), name='kategori-artikel'),
